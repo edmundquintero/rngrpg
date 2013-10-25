@@ -52,18 +52,6 @@ p.desc{
   padding:0;
   box-shadow: inset 0px 0px 3px 0px #041438, 0px 0px 10px -1px #7F9EE7;
 }
-#sub-food1, #sub-food2, #sub-food3{
-  background: url('../img/logos.png') no-repeat #FFF;
- }
-#sub-food1{ background-position: -0px -77px; width: 82px; height: 62px;}
-#sub-food2{ background-position: -331px -230px; width: 100px; height: 53px;}
-#sub-food3{ background-position: -456px -184px; width: 100px; height: 55px;}
-#sub-food1:hover, #sub-food2:hover, #sub-food3:hover{
-   box-shadow: inset 0px 0px 3px 0px #041438, 0px 0px 10px -1px #CCC;
-}
-#sub-food1:active, #sub-food2:active, #sub-food3:active{
-   box-shadow: inset 0px 0px 5px 0px #041438, 0px 0px 10px -1px #CCC;
-}
 /*Footer*/
 .footer {
   padding: 20px 0;

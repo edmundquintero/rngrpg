@@ -12,7 +12,8 @@
   <script type="text/javascript" src="/js/vendor/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="/js/vendor/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/vendor/angular.min.js"></script>
-  <title>Vet Colors/Theme</title>
+  <script type="text/javascript" src="/js/events.js"></script>
+  <title>RNG - RPG</title>
 </head>
 <body>
 
@@ -20,8 +21,8 @@
 
 <div class="hero-unit visible-desktop">
   <div class="container">
-    <h1>Veterinary Hospital</h1>
-    <p>A full service hospital committed to the health of your pet.</p>
+    <h1>RNG - RPG</h1>
+    <p>You guessed it... an RPG made with a RNG.</p>
   </div>
 </div>
 
@@ -42,7 +43,7 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li class="{{home}}"><a href="/">Home</a></li>
-                <li class="{{services}}"><a href="/service">Services</a></li>
+                <li class="{{stats}}"><a id="stats-link" href="#">Stats</a></li>
                 <li class="{{products}}"><a href="/product">Products</a></li>
                 <li class="{{whoweare}}"><a href="/whoweare">Who We Are</a></li>
                 <li class="{{contact}}"><a href="/contact">Contact Us</a></li>
@@ -64,28 +65,41 @@
   <div class="row-fluid">
 
     <!-- SideBar -->
+    {{#if sidebar}}
     <div class="span3" id="side-bar">
 
     <div class="row-fluid">
       <div class="span12">
-      <h1>Sidebar</h1>
-        <p class="desc">Selectable items pertaining to the navigation link selected. For example if the Products navigation link is selected items here would be Dogfood, Flea and Tick, Catfood, Medication..</p>
+        {{#if character}}
+          <h1>{{ character.name }}</h1>
+        {{else}}
+          <h1>Unknown</h1>
+        {{/if}}
       </div>
     </div>
-    <!-- Theme pallet -->
-    {{#each sidebar}}
+    <!-- Character Stats -->
+    {{#each character.stats}}
     <div class="row-fluid">
-      <a href="/{{type}}/{{_id}}">
-        <div class="subnav-item span10" id="sub-{{name}}" data-object-id="{{_id}}">{{title}}</div>
-      </a>
+      <ul>
+        <li class="character-stat span10" id="stat-{{name}}">{{name}} : {{ammount}}</li>
+      </ul>
     </div>
     {{/each}}
-    <!-- end Theme pallet -->
+    <!-- end Character Stats -->
 
   </div> 
+  {{/if}}
   <!-- End Sidebar -->
   <!-- Main Content -->
+  {{#if sidebar}}
+    <div class="span9" id="main-content">
+  {{else}}
+    <div class="span12" id="main-content">
+  {{/if}}
+
     {{{body}}}
+
+    </div>
   <!-- End Main Content -->
   </div>
 </div>

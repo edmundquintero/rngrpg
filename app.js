@@ -1,6 +1,7 @@
 var express = require('express');
 var VetSiteDb = require('./static/js/mongo').VetSiteDb;
 
+
 var app = express();
 
 // include handelbars for templating
@@ -24,10 +25,7 @@ vetSiteDb.testdata();
 app.get('/', function(req, res) {
   res.render('index',{
  		home:"active",
-		sidebar:[
-          { name:"food1", title:"" },
-          { name:"food2", title:"" },
-          { name:"food3", title:"" }]
+    sidebar: false,
   });
 });
 // Service Rout ----
@@ -41,14 +39,16 @@ app.get('/service/:id', function(req, res) {
         });
   });
 });
-app.get('/service', function(req, res) {
-  var contents = { services:"active" };
-  vetSiteDb.getServiceList( function(error,services){
-        contents.sidebar = services;
-        vetSiteDb.getService(services[0]._id, function(error,service){
-          contents.returnItem = service;
-          res.render('services', contents);
-        });
+app.get('/stats', function(req, res) {
+  res.send({
+    character: {
+      name: "Zygorf",
+      stats:[
+      { name:"health", ammount:100 },
+      { name:"attack", ammount:10 },
+      { name:"defense", ammount:5 }
+      ]
+    }
   });
 });
 // Product rout ----
